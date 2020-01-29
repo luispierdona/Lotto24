@@ -21,6 +21,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { InforDialogComponent } from './pages/material-view/infor-dialog/infor-dialog.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { MatIconModule } from '@angular/material';
     MatDialogModule,
     MatButtonModule,
     MatIconModule,
+    MatSnackBarModule,
   ],
   entryComponents: [
     InforDialogComponent,

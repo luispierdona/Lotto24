@@ -5,6 +5,7 @@ import { MusicInfo } from 'src/app/models/music';
 import { Config } from 'protractor';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-material-view',
@@ -18,7 +19,8 @@ export class MaterialViewComponent implements OnInit {
   filteredCollection: MusicInfo[];
   cardClass = 'backgroundA';
   selected = 'none';
-  constructor(private service: MusicInfoService, public dialog: MatDialog, private sanitizer: DomSanitizer) { }
+  constructor(private service: MusicInfoService, public dialog: MatDialog, private sanitizer: DomSanitizer,
+              private snackbar: MatSnackBar) { }
 
   ngOnInit() {
     // Set the Style by the screen width (to check if it is pc or phone)
@@ -35,7 +37,12 @@ export class MaterialViewComponent implements OnInit {
   getMusicInfo() {
     this.service.getMusicInfo()
     .subscribe(
-      (data: Config) => { this.collection = data.results; this.filteredCollection = this.collection; console.log(this.collection); },
+      (data: Config) => {
+        this.collection = data.results;
+        this.filteredCollection = this.collection;
+        this.snackbar.open('Data successfully loaded', 'Cerrar', { duration: 3000 });
+        // console.log(this.collection);
+      },
       error => { console.log(error);
     });
   }
