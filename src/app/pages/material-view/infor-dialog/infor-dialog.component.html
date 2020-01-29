@@ -1,0 +1,13 @@
+<div>
+  <mat-card-header>
+    <!-- <div mat-card-avatar class="example-header-image"></div> -->
+    <mat-card-title>{{Obj.collectionName}}</mat-card-title>
+    <mat-card-subtitle>{{Obj.artistName}}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src="{{Obj.artworkUrl100}}" alt="Album Photo">
+  <mat-card-content>
+    <p><b>Release Date: </b>{{Obj.releaseDate}} | <b>{{Obj.primaryGenreName}}</b></p>
+    <p>{{Obj.copyright}}</p>
+    <button mat-fab color="warn" class="btn" (click)="close()"><mat-icon class="mat-18">close</mat-icon></button>
+  </mat-card-content>
+</div>

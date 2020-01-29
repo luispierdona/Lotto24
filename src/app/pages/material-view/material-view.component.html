@@ -1,0 +1,34 @@
+<!-- FILTERS -->
+<div class="filters">
+  <mat-card class="mat-elevation-z8 filterCard">
+    <form>
+      <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter" name="dateFrom">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Select an option</mat-label>
+        <mat-select [(value)]="selected" (selectionChange)="applySort()">
+          <mat-option value="none">None</mat-option>
+          <mat-option value="ANAZ">Artist Name A-Z</mat-option>
+          <mat-option value="ANZA">Artist Name Z-A</mat-option>
+          <mat-option value="TAZ">Title A-Z</mat-option>
+          <mat-option value="TZA">Title Z-A</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </form>
+  </mat-card>
+</div>
+
+<!-- CARDS -->
+<div class="mat-elevation-z8" [class]="cardClass" *ngFor="let item of filteredCollection"
+      (window:resize)="onResize($event)" (click)="openInfoDialog(item)">
+  <div class="content">
+    <div class="front"
+      [style.background-image]="getBackground(item.artworkUrl100)">
+    </div>
+    <div class="back">
+      <h5>{{item.collectionName}}</h5>
+      <p>{{item.artistName}}</p>
+    </div>
+  </div>
+</div>
